@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>팝업창 기본4 - addClass()</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ul,
+      ol,
+      li {
+        list-style: none;
+      }
+
+      img {
+        vertical-align: top;
+      }
+
+      .wrap {
+        width: 60%;
+        margin: 50px auto;
+        background: #ff5;
+        font-size: 2rem;
+      }
+
+      .popup {
+        position: fixed;
+        top: -100%;
+        left: 50%;
+        transform: translate(-550%, -50%) rotate(180deg);
+        width: 600px;
+        height: 400px;
+        border: 10px solid #000;
+        background: #fff;
+        padding: 60px;
+
+        /* display: none; */
+        opacity: 0;
+        transition: 1s cubic-bezier(0, 0.34, 0.11, 1.45);
+      }
+      .popup.active {
+        /* display: block; */
+        top: 50%;
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      .dim {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+
+        display: none;
+      }
+    </style>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {
+        // 대상을 변수에 저장
+        const $popup = $('.popup');
+        const $btnClose = $('.btn-close');
+        const $dim = $('.dim');
+
+        setTimeout(openPopup, 1000);
+
+        $('.wrap a').on('click', (e) => {
+          // a가 링크 이동을 안하게 기본 동작 막기
+          e.preventDefault();
+          openPopup();
+        });
+
+        // btnClose를 클릭하면 팝업창이 닫히게
+        $btnClose.on('click', closePopup);
+
+        // dim을 클릭하면 팝업창이 닫히게
+        $dim.on('click', closePopup);
+
+        // 중복되는 동작을 함수로 정의 - closePopup
+        function closePopup() {
+          $popup.removeClass('active');
+          $dim.fadeOut();
+        }
+        // 중복되는 동작을 함수로 정의 - openPopup
+        function openPopup() {
+          $dim.fadeIn();
+          $popup.addClass('active');
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="dim"></div>
+    <div class="popup">
+      <p>팝업 내용이 뿌려집니다.</p>
+      <button class="btn-close" type="button">닫기</button>
+    </div>
+
+    <div class="wrap">
+      <p>
+        <a href="#">Lorem ipsum dolor sit</a> amet consectetur adipisicing elit. Ipsa, suscipit quo dolorum
+        necessitatibus tempore soluta, accusamus rem temporibus dicta repellendus nam numquam sed obcaecati vel laborum
+        et ad dolore laboriosam quas. Qui et alias mollitia cum, cumque nam temporibus fugiat repudiandae corrupti nobis
+        placeat provident atque officia recusandae, aspernatur, deleniti quisquam voluptatibus quaerat iure? Eaque culpa
+        sint minima cumque est? Quos iste quas consectetur est a excepturi quasi ducimus laborum accusantium odio? Odio
+        nulla maiores dolor adipisci minus hic amet quis beatae similique soluta unde quo accusantium consequatur sit
+        cum, necessitatibus voluptates, enim ad possimus labore vero obcaecati maxime nostrum. Sequi vitae rerum maxime
+        voluptatem sint, iste consectetur molestiae ipsam repellat magnam eum saepe ducimus adipisci odio placeat
+        eveniet voluptatibus incidunt praesentium, voluptates accusantium aspernatur et! Nulla dolorem, ea quos ex atque
+        officia est deserunt dolore odio vero eum magni aut, veniam architecto, non veritatis consequuntur facilis qui
+        dignissimos eius magnam? Doloribus nostrum provident aperiam repudiandae minima harum similique, officia,
+        quisquam magni nemo consequuntur nam sequi ducimus voluptatibus delectus qui blanditiis repellat rerum odio
+        asperiores amet odit quidem. Molestias maiores dicta temporibus consequuntur vitae enim numquam libero assumenda
+        laborum consequatur ad quam sunt quis a voluptates deserunt, cum voluptatum, molestiae quidem eum! Voluptate
+        magnam fugiat voluptatum hic quae odio ratione error odit harum laborum rerum, labore, minus atque numquam.
+        Porro nisi architecto cum est impedit obcaecati voluptas temporibus soluta illo? Officiis, ad tempore, porro
+        corporis cupiditate voluptates natus quam inventore esse perspiciatis et at sapiente eos, exercitationem iusto
+        ea magnam perferendis repellat rerum repudiandae fuga voluptatibus! Veniam est quidem ipsa architecto vel sunt
+        voluptates hic, repudiandae nulla? Tempora fugiat ullam ea natus nobis facere fuga voluptate at quibusdam, totam
+        accusamus reprehenderit atque obcaecati! Dolor ea eveniet cupiditate iste nesciunt qui distinctio maxime,
+        exercitationem eos iusto animi porro sequi quidem dicta quod reprehenderit nobis similique, dignissimos itaque
+        provident deserunt? Atque laborum veniam, dolores quidem quaerat perspiciatis facilis omnis porro fuga molestiae
+        ipsam voluptatibus a! Ut unde quisquam dicta dolores soluta quasi, cum et id, voluptatum esse modi ullam hic
+        accusamus, facere vel quis libero repellat sint quae minima quidem eaque similique quos beatae. Totam laudantium
+        cupiditate quo nihil minima vel cum voluptatem illo, suscipit atque ducimus harum rerum ut assumenda quasi nemo
+        expedita voluptatum animi accusantium unde magni consequuntur possimus. Ipsam molestias officia vitae
+        praesentium adipisci vero debitis magni iste voluptas impedit officiis, eum repellendus. Aliquid, quo debitis
+        cupiditate nobis non deleniti et ex nulla quis numquam ullam delectus est aut facilis similique voluptatum,
+        consectetur qui. Labore delectus sequi vitae earum explicabo numquam veniam amet eum ab enim nam voluptates
+        commodi, non, officia nobis. Quis ut repudiandae unde perferendis fugiat dolore. Aliquam fugit exercitationem
+        tempore? Dolorum tenetur odit dolor tempore ratione reprehenderit, voluptatem porro dolore voluptates nostrum
+        inventore asperiores odio doloremque deleniti incidunt necessitatibus quibusdam, placeat, voluptatibus
+        consequuntur molestias? Laudantium facere adipisci architecto sed dolores quibusdam culpa soluta atque obcaecati
+        odio, quo dignissimos reprehenderit est, expedita rem esse quae ut! Minima quisquam quasi beatae adipisci
+        assumenda quae sit voluptatibus voluptates consequuntur?
+      </p>
+    </div>
+  </body>
+</html>
