@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>팝업창 기본2 - dim</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      ol,
+      li {
+        list-style: none;
+      }
+      img {
+        vertical-align: top;
+      }
+      .wrap {
+        width: 60%;
+        margin: 50px auto;
+        background: #ff5;
+        font-size: 2rem;
+      }
+
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 400px;
+        border: 10px solid #000;
+        background: #fff;
+        padding: 60px;
+
+        display: none;
+      }
+      .dim {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+      }
+    </style>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {
+        // 대상을 변수에 저장
+        const $popup = $('.popup');
+        const $btnClose = $('.btn-close');
+        const $dim = $('.dim');
+
+        $('.wrap a').on('click', (e) => {
+          e.preventDefault();
+          $dim.fadeIn();
+          $popup.slideDown();
+        });
+
+        // btnClose를 클릭하면 팝업창이 닫히게
+        $btnClose.on('click', () => {
+          $popup.slideUp();
+          $dim.fadeOut();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="dim"></div>
+    <div class="popup">
+      <p>팝업 내용이 뿌려집니다.</p>
+      <button class="btn-close" type="button">닫기</button>
+    </div>
+
+    <div class="wrap">
+      <p>
+        <a href="#">Lorem ipsum dolor sit</a>, amet consectetur adipisicing elit. Ab omnis voluptate ad? Veritatis sequi blanditiis ullam quo rem temporibus quas exercitationem, vel alias atque
+        distinctio dolorum molestias recusandae necessitatibus natus. Vero optio nam deleniti quia neque. Officiis ullam voluptatum, eos odio facere voluptas debitis laborum quos quaerat possimus?
+        Nulla labore, beatae quisquam fuga commodi, reprehenderit voluptates ab doloribus consequuntur provident quod dignissimos consequatur culpa accusantium. Accusamus neque pariatur atque error
+        quibusdam esse voluptas. Necessitatibus vel quas adipisci sunt nostrum vero et omnis aspernatur modi atque enim architecto id ea ratione ut illo esse dolore, dolorem quo molestias repellat
+        voluptatem laudantium aperiam dicta! Officia assumenda pariatur minima maiores cumque placeat natus ex expedita laudantium commodi. Repudiandae dolore officia cum suscipit nisi porro,
+        recusandae possimus ipsum placeat molestias consequatur aperiam delectus, error et explicabo similique ad asperiores eos mollitia a fugiat alias blanditiis vitae. Dolor, aut hic ad dolorem
+        animi ipsa quae soluta! Voluptates necessitatibus corporis commodi sequi, odio ipsam eligendi accusantium nostrum sed porro ipsum iure aut, nam voluptatibus obcaecati quibusdam modi officiis
+        sunt labore, laudantium repellendus sit enim! Similique eaque voluptatum delectus magni, perspiciatis consequuntur sunt. Eveniet accusantium quod veritatis beatae, doloribus a exercitationem
+        natus expedita magnam architecto quaerat necessitatibus? Perferendis soluta ullam incidunt quo, odio praesentium atque voluptate quis illo, cum odit. Nulla, neque, adipisci illum iure, dicta
+        asperiores dolor sequi magni rem repudiandae nam quam. Error non consectetur doloribus impedit obcaecati ipsam maiores. Ipsam exercitationem culpa natus dignissimos, possimus, tempore labore
+        dolorem, sunt necessitatibus doloribus distinctio ducimus veniam assumenda sit ex. Porro animi labore est quidem autem ullam excepturi beatae iusto placeat quibusdam. Est cupiditate rerum
+        culpa laborum fuga sit repellat, officia quidem ab provident! Est quo nemo qui accusamus tempora, voluptatum ipsum quis. Sit doloremque reiciendis nihil fugit facere. Ab, officiis doloribus
+        eos, ipsa ut ex necessitatibus asperiores perspiciatis impedit iste, placeat suscipit voluptatibus ducimus nobis. Aliquam dignissimos nesciunt ipsa rem amet, aperiam sed dolorum animi voluptas
+        in, sint dolorem a mollitia ducimus adipisci porro sunt eligendi, quo eum aliquid recusandae ut. Esse, quae similique atque vero placeat, et beatae incidunt sequi excepturi asperiores vel
+        consequatur modi? Itaque porro aliquam doloremque amet culpa provident voluptatum dignissimos odio quibusdam repellat, dolore eos optio ab, dolorum dolor laudantium! Doloribus recusandae
+        voluptatem nesciunt ad velit delectus ducimus excepturi quo temporibus debitis amet, quam impedit non officiis voluptates, ex voluptatum quis consequuntur quod minus iure. Cumque minus amet
+        accusantium sed placeat. Incidunt neque nobis quod molestiae, voluptatem fugit delectus modi? Explicabo odio vero adipisci commodi, at aut deleniti nesciunt tempore praesentium nisi neque
+        minus consequatur soluta, repellendus rem corporis quia, impedit accusamus eius accusantium laboriosam? Vel cumque expedita aperiam suscipit impedit iure sapiente iusto molestiae cupiditate
+        doloremque, assumenda debitis fugiat quae totam sint sed saepe maiores, consequuntur, distinctio rerum minus fugit nulla doloribus dolor. Expedita possimus quod velit voluptate maiores. Error
+        maxime amet atque numquam cum. Voluptatum fugiat fuga voluptate modi odio nam quisquam laborum beatae temporibus perspiciatis dignissimos, consectetur quas a necessitatibus quaerat at
+        voluptatibus praesentium explicabo nostrum amet veniam.
+      </p>
+    </div>
+  </body>
+</html>
