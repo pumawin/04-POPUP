@@ -51,6 +51,8 @@ $(function () {
   const $menuList = $('.menu > li');
   const $submenu = $('.submenu');
 
+  $menuList.on('dbclick', initSubmenu);
+
   $menuList.on('click', function (e) {
     e.preventDefault(); /* 기본동작 막기 a가 가진 다른 링크로 가는 기능을 막아준다. */
     initSubmenu();
